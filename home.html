@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <!-- <link rel="stylesheet" href="css/style_drawer.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <!-- ******** HOME ******** -->
+
+        <div class="header">
+            <ul class="headerText">
+                <li><a href="index.html">INTRO</a></li>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="floor.html">FLOOR</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="HOME">
+            <div class="homeWrap">
+                <section class="homeText">
+                    <h1>Cafe Campanella</h1>
+                    <h2>カフェ・カムパネルラ</h2>
+                    <h3 class="HOME_target"><img src="img/Logo.svg" alt="logo"></h3>
+                    <br><br><br>
+                    <div class="container">
+                        <button class="btn" id="btn">
+                            回転数
+                            <i class="bx bx-chevron-down" id="arrow"></i>
+                        </button>
+
+                        <div class="dropdown" id="dropdown">
+                            <a href="#create">停止</a>
+                            <a href="#draft">低速</a>
+                            <a href="#move">中速</a>
+                            <a href="#profile">高速</a>
+                            <a href="#notification">ビューン</a>
+                            <a href="#settings">半端ない</a>
+                        </div>
+                    </div>
+                    <div id="selectedItemContent"></div>
+
+                </section>
+                <div class="georgeCircle">
+                    <div class="circle_contents">
+                        <div class="georgeFace">
+                            <img src="img/geortaFace.png" alt="george">
+                        </div>
+                        <div class="banana_contents">
+                            <img id="HOME_circle" class="banana_circle1" src="img/banana_circle.png" alt="banana">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <!-- ******** HOME  end  ******** -->
+
+        <script src="js/common_home.js"></script>
+</body>
+
+</html>

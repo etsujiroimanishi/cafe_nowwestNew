@@ -1,0 +1,124 @@
+/*********************** モーダルとして表示される要素。モーダルの横幅を大きくしたい時にmax-widthを触る程度に。 ***********************/
+
+.modal-container {
+    text-align: center;
+    max-width: 60rem;
+    width: calc(100% - 1rem);
+    max-height: 120vh;
+    height: 60vh;
+    padding: 1.5rem;
+    background-color: #eee;
+    overflow-y: auto;/* max-heightを超えた要素はスクロールバーで表示されるようになる */
+}
+
+/*********************** ここから下は必要がない限り、触らない。 ***********************/
+
+/* モーダルウィンドウのオーバーレイ(背景)。オーバーレイの色や不透明度を変える、z-indexのトラブルがあった時だけ触る。 */
+.micromodal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+/* モーダルとなる要素全体を囲う親要素*/
+.micromodal-slide {
+    display: none;
+}
+
+/* モーダルを開くボタンを押すと、クラスis-openが付与されるので、その時の処理。*/
+/* クラス名を変更する場合は、ここのis-openを変更したクラス名に書き換えればOK */
+.micromodal-slide.is-open {
+    display: block;
+}
+
+/* モーダル内の閉じるボタン。*/
+
+.modal-close {
+    width: fit-content;
+    margin-inline-start: auto; /* 閉じるボタンを右寄せにするために入れている */
+    margin-block-end: 1rem;
+    display: block;
+    background: transparent;
+    border: 0;
+}
+
+.modal-close::before {
+    content: "\2715";
+    cursor: pointer;
+}
+
+/******************** モーダルのアニメーション設定 *************************/
+
+.micromodal-slide[aria-hidden="false"] .micromodal-overlay {
+    animation: mmfadeIn .3s cubic-bezier(.0, .0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal-container {
+    animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .micromodal-overlay {
+    animation: mmfadeOut .3s cubic-bezier(.0, .0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal-container {
+    animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+@keyframes mmfadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes mmfadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes mmslideIn {
+    from {
+        transform: translateY(15%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes mmslideOut {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10%);
+    }
+}
+
+
+/* *********************** will-changeプロパティについて ****************************** */
+
+/* will-changeプロパティによってアニメーション処理のパフォーマンスを上げることができますが、
+多用すると負荷がかかって逆にパフォーマンス低下を招くのでコメントアウトしています。
+アニメーションの動きがカクカクしていて解決できない場合は下記のコードを適用しましょう。 */
+
+
+/* .micromodal-slide .modal-container,
+.micromodal-slide .modal-overlay {
+    will-change: transform;
+} */
