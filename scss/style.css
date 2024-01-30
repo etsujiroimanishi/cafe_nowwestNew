@@ -419,6 +419,11 @@ th {
   justify-content: center;
   gap: 10px;
 }
+@media (max-width: 700px) {
+  .introWrap {
+    height: 20vh;
+  }
+}
 
 /*    Earth   */
 .container-fluid {
